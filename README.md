@@ -19,7 +19,7 @@ This project uses **OpenTofu** (an open-source Terraform alternative) to create 
    ```bash
    git clone https://github.com/your-username/opentofu-project.git
    cd opentofu-project
-````
+   ````
 
 2. **Initialize OpenTofu**
 
