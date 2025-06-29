@@ -1,18 +1,42 @@
 # OpenTofu AWS S3 Bucket Project
 
-This project uses **OpenTofu** (an open-source Terraform alternative) to create and manage AWS infrastructure — specifically an S3 bucket.
+![OpenTofu Logo](images/opentofu-logo.png)  
+*OpenTofu: Open source Infrastructure as Code*
+
+---
+
+## About OpenTofu
+
+[OpenTofu](https://opentofu.org) is an open-source, community-driven Infrastructure as Code (IaC) tool fully compatible with Terraform configurations. It helps you define, preview, and deploy cloud infrastructure declaratively and collaboratively.
+
+- Compatible with Terraform provider ecosystem
+- Supports multiple cloud providers like AWS, Azure, GCP, Cloudflare, and more
+- Focus on transparency, security, and community governance
+
+![OpenTofu Workflow](images/opentofu-workflow.png)
+
+---
+
+## Project Overview
+
+This repository contains OpenTofu configuration files to create and manage an **AWS S3 bucket**. It demonstrates:
+
+- Writing infrastructure as code with HCL
+- Using OpenTofu CLI to initialize and apply configurations
+- Managing AWS credentials securely
+- Version control of infrastructure using Git
 
 ---
 
 ## Prerequisites
 
-- [OpenTofu](https://opentofu.org) installed and configured
+- [OpenTofu CLI](https://opentofu.org/docs/cli/installation) installed
 - AWS CLI installed and configured with valid credentials
-- Git installed for version control
+- Git installed
 
 ---
 
-## Setup Instructions
+## Getting Started
 
 1. **Clone the repository**
 
@@ -43,18 +67,51 @@ This project uses **OpenTofu** (an open-source Terraform alternative) to create 
 
 ---
 
-## Configuration
+## Configuration Example
 
-The main Terraform/OpenTofu configuration is in `main.tf`. It defines:
+`main.tf` snippet:
 
-* AWS provider configuration
-* S3 bucket resource with a unique bucket name
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "example" {
+  bucket = "your-unique-bucket-name-2025-06-29"
+}
+```
+
+---
+
+## Screenshots
+
+**OpenTofu initialization:**
+
+![tofu init](images/tofu-init.png)
+
+**Applying infrastructure:**
+
+![tofu apply](images/tofu-apply.png)
 
 ---
 
 ## Notes
 
-* Make sure your AWS credentials are properly configured. You can do this with `aws configure` or by setting environment variables.
-* Bucket names must be globally unique.
+* Make sure AWS credentials are configured using `aws configure` or environment variables.
+* Bucket names must be globally unique across AWS.
+* This repo is a starting point for managing infrastructure with OpenTofu.
 
----
+## Resources
+
+* [OpenTofu Official Site](https://opentofu.org)
+* [OpenTofu Documentation](https://opentofu.org/docs/)
+* [AWS S3 Documentation](https://docs.aws.amazon.com/s3/index.html)
